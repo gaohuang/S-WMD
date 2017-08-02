@@ -30,3 +30,6 @@ for **ohsumed, reuters (r8), 20news (20ng2_500)**
 
 The only difference with the above datasets is that because there are pre-defined train-test splits, there are already variables `BOW_xtr`, `BOW_xte`, `xtr`, `xte`, `ytr`, `yte`.
 
+## KNN
+
+In the paper, we used cross-validation to set k for each dataset and tried these k's [1,3,5,7,9,11,13,15,17,19].  We also implemented a KNN function that given a k (or a list of k's) would only classify a point if the majority of the k nearest neighbors voted on the same class. If not, then we would reduce k (by 2) and consider if for this smaller k there was a majority vote for a class. This would continue this way until either a majority was reached or k=1 (in which case we just use the nearest neighbors vote). This function is in the file [knn_fall_back.m](https://github.com/gaohuang/S-WMD/blob/master/knn_fall_back.m)
