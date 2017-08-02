@@ -15,11 +15,11 @@ Demo code runs on the [bbcsport](http://mlg.ucd.ie/datasets/bbc.html) dataset. U
 
 Here is a Dropbox link to the datasets used in the paper: https://www.dropbox.com/sh/nf532hddgdt68ix/AABGLUiPRyXv6UL2YAcHmAFqa?dl=0
 
-They're all matlab .mat files and have the following variables:
+They're all matlab .mat files and have the following variables (note the similarity to the demo dataset):
 
 **for bbcsport, twitter, recipe, classic, amazon**
-- `X [1,n+ne]`: each cell corresponds to a document and is a `[300,u]` matrix where `u` is the number of unique words in that document, `n` is the number of training points, and `ne` is the number of test points. Each column is the word2vec vector for a particular word.
-- `Y [1,n]`: the label of each document
+- `X [1,n+ne]`: each cell corresponds to a document and is a `[d,u]` matrix where `d` is the dimensionality of the word embedding, `u` is the number of unique words in that document, `n` is the number of training points, and `ne` is the number of test points. Each column is the word2vec vector for a particular word.
+- `Y [1,n+ne]`: the label of each document
 - `BOW_X [1,n+ne]`: each cell in the cell array is a vector corresponding to a document. The size of the vector is the number of unique words in the document, and each entry is how often each unique word occurs.
 - `words [1,n+ne]`: each cell corresponds to a document and is itself a `{1,u}` cell where each entry is the actual word corresponding to each unique word
 - `TR [5,n]`: each row corresponds to a random split of the training set, each entry is the index with respect to the full dataset. So for example, to get the BOW of the training set for the third split do: `BOW_xtr = BOW_X(TR(3,:))`
