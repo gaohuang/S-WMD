@@ -19,7 +19,7 @@ for split = 1:cv_folds
 
     % Load data
     [xtr,xte,ytr,yte, BOW_xtr,BOW_xte, indices_tr, indices_te] = load_data(data_set, split);
-    [idx_tr, idx_val] = makesplits_seed(1, ytr, 0.8, 1, 1, 1);
+    [idx_tr, idx_val] = makesplits(ytr, 0.8, 1, 1);
     xv = xtr(idx_val);
     yv = ytr(idx_val);
     BOW_xv = BOW_xtr(idx_val);
@@ -34,7 +34,7 @@ for split = 1:cv_folds
 
 
     % First heuristically find a proper scale to avoid numeric problems
-    for ii = randperm(length(ytr),500)
+    for ii = randperm(length(idx_val),500)
         M = distance(A_SWCD*xtr{ii}, A_SWCD*xv{ii});
         dis_max(ii) = max(max(M));
     end
