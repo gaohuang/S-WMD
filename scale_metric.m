@@ -34,8 +34,8 @@ for split = 1:cv_folds
 
 
     % First heuristically find a proper scale to avoid numeric problems
-    for ii = randperm(length(idx_val),500)
-        M = distance(A_SWCD*xtr{ii}, A_SWCD*xv{ii});
+    for ii = randperm(length(ytr),500)
+        M = distance(A_SWCD*xtr{ii}, A_SWCD*xv{mod(ii,length(idx_val))+1}));
         dis_max(ii) = max(max(M));
     end
     A_SWCD = A_SWCD/sqrt(mean(dis_max));
